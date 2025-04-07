@@ -1,4 +1,4 @@
-import os
+
 from datetime import datetime, timedelta
 
 def format_date(date_):

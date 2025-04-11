@@ -16,3 +16,13 @@ class Book:
 # -----------------------------
 # Write your solution here
 # -----------------------------
+
+def books_of_genre(books:list,genre:str):
+
+    return [book for book in books if book.genre==genre ]
+
+
+if __name__=="__main__":
+    print("Books in the crime genre:")
+    for book in books_of_genre(books, "crime"):
+        print(f"{book.author}: {book.name}")

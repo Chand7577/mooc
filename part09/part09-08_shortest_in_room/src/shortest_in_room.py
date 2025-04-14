@@ -11,19 +11,24 @@ class Person:
 class Room:
     def __init__(self):
         self.rooms=[]
-        self.heights=[]
+        
 
     def add(self,person:Person):
-        self.heights.append(person.height)
+        
         self.rooms.append(person)
 
     def is_empty(self):
         return len(self.rooms)==0
 
     def print_contents(self):
-        print(f"There are {len(self.rooms)} persons in the room, and their combined height is {sum(self.heights)} cm")
+        combined_height=0
         for person in self.rooms:
-            print(f"{person.name} ({person.height})")
+            combined_height+=person.height
+
+        print(f"There are {len(self.rooms)} persons in the room, and their combined height is {combined_height} cm")
+        
+        for person in self.rooms:
+            print(f"{person.name} ({person.height}cm)")
 
 
     def shortest(self):
@@ -41,18 +46,10 @@ class Room:
     def remove_shortest(self):
        
         if not self.is_empty():
-           
-            short_person_name=self.shortest()
-           
-            for person in self.rooms:
-               
-                if person.name==short_person_name.name:
-                    
-                    self.rooms.remove(person)
-                    self.heights.remove(person.height)
-                    return person
-
-        
+            short_person=self.shortest()
+            if short_person:
+                self.rooms.remove(short_person)
+                return short_person        
             
         return None
 
@@ -64,7 +61,7 @@ if __name__=="__main__":
     room.add(Person("Kenya", 172))
     room.add(Person("Nina", 162))
     room.add(Person("Ally", 166))
-    # room.print_contents()
+    room.print_contents()
 
     # print()
 

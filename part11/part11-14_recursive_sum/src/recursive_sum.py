@@ -1,15 +1,26 @@
 # WRITE YOUR SOLUTION HERE:
 
+def recursive_sum(number:int):
+    if number<=1:
+        return number
 
-def add_numbers_to_list(numbers:list):
-    #base case
-    if len(numbers)%5!=0:
-        numbers.append(numbers[-1]+1)        
 
-        add_numbers_to_list(numbers)
+    """ 1+2+3...5  
+        sum=5+4...1
+        sum=4+3...1
+        sum=3+2+1
+        recusive equation would be currentNum+recursive_call(currentNum-1)
+     """
+
+    result=number+recursive_sum(number-1)
+    return result
+
 
 
 if __name__=="__main__":
-    numbers = [1,3,4,5,10,11]
-    add_numbers_to_list(numbers)
-    print(numbers)
+
+    result = recursive_sum(3)
+    print(result)
+
+    print(recursive_sum(5))
+    print(recursive_sum(10))
